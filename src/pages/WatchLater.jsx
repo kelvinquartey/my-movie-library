@@ -1,10 +1,22 @@
 import "../css/WatchLater.css"
-import { useMovieContext } from "../contexts/MovieContext"
+import { useWatchLaterContext } from "../contexts/WatchLaterContext";
 import MovieCard from "../components/MovieCard"
 
 function WatchLater() {
+  const { watchLater } = useWatchLaterContext();
 
-
+  if (Array.isArray(watchLater) && watchLater.length > 0) {
+    return (
+      <div className="watch-laters">
+        <h2>Your Movies To Watch Later</h2>
+        <div className="movies-grid">
+          {watchLater.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
     return (
         <div className="watch-laters-empty">
