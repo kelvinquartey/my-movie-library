@@ -12,13 +12,29 @@ function MovieCard({movie}){
 
     function onFavoriteClick(e){
         e.preventDefault()
-        if (favorite) removeFromFavorites(movie.id)
-        else addToFavorites(movie)
+
+        if (favorite) {
+            removeFromFavorites(movie.id);
+        } else {
+            // If it's already in watch later, remove it from there
+            if (watchLater) {
+                removeFromWatchLater(movie.id);
+            }
+            addToFavorites(movie);
+        }
     }
 
     function onWatchLaterClick(e) {
         e.preventDefault();
-        watchLater ? removeFromWatchLater(movie.id) : addToWatchLater(movie);
+        if (watchLater) {
+            removeFromWatchLater(movie.id);
+        } else {
+            // If it's already in favorites, remove it from there
+            if (favorite) {
+                removeFromFavorites(movie.id);
+            }
+            addToWatchLater(movie);
+        }
     }
 
     return <div className="movie-card">
