@@ -15,7 +15,6 @@ function Home(){
                 const popularMovies = await getPopularMovies()
                 setMovies(popularMovies)
             } catch (err) {
-                console.log(error)
                 setError("Failed to load movies....")
             } finally {
                 setLoading(false)
@@ -42,6 +41,9 @@ function Home(){
             setLoading(false)
         }
     };
+
+    console.log("API Key:", import.meta.env.VITE_TMDB_API_KEY);
+console.log("Base URL:", import.meta.env.VITE_TMDB_BASE_URL);
 
     return (
         <div className="home">
