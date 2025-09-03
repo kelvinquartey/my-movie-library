@@ -42,8 +42,6 @@ function Home(){
         }
     };
 
-    console.log("API Key:", import.meta.env.VITE_TMDB_API_KEY);
-console.log("Base URL:", import.meta.env.VITE_TMDB_BASE_URL);
 
     return (
         <div className="home">
